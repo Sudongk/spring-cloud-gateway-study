@@ -1,6 +1,7 @@
 package com.example.gateway.filter;
 
 import com.example.gateway.dto.CustomDto;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.http.server.reactive.ServerHttpRequest;
@@ -12,6 +13,9 @@ import reactor.core.publisher.Mono;
 @Component
 public class CustomGlobalFilter extends AbstractGatewayFilterFactory<CustomDto> {
 
+    @Value("${jwt.secret}")
+    private String secret;
+
     public CustomGlobalFilter() {
         super(CustomDto.class);
     }
@@ -21,6 +25,8 @@ public class CustomGlobalFilter extends AbstractGatewayFilterFactory<CustomDto> 
         return (exchange, chain) -> {
             ServerHttpRequest request = exchange.getRequest();
             ServerHttpResponse response = exchange.getResponse();
+
+            System.out.println("secret: " + secret);
 
             if (config.getLogging()) {
                 // HTTP 요청 정보 로깅
