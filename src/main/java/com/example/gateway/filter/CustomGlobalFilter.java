@@ -31,7 +31,7 @@ public class CustomGlobalFilter extends AbstractGatewayFilterFactory<CustomDto> 
             if (config.getLogging()) {
                 // HTTP 요청 정보 로깅
                 System.out.println(
-                        "req" + request.getId() +
+                        "CustomGlobalFilter: req" + request.getId() +
                         ", " + request.getMethod() +
                         ", " + request.getPath() +
                         ", " + request.getRemoteAddress()
@@ -43,7 +43,7 @@ public class CustomGlobalFilter extends AbstractGatewayFilterFactory<CustomDto> 
                 if (config.getLogging()) {
                     // HTTP 응답 정보 로깅
                     System.out.println(
-                            "res" + request.getId() +
+                            "CustomGlobalFilter : res " + request.getId() +
                             ", " + response.getStatusCode() +
                             ", " + response.getHeaders() +
                             ", " + response.getCookies() +

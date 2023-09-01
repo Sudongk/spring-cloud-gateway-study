@@ -11,6 +11,8 @@ spring:
           args:
             logging: true
         - name: "CacheFilter"
+          args:
+            logging: true
 
       globalcors:
         cors-configurations:
@@ -45,6 +47,14 @@ spring:
           uri: "lb://MENU-SERVICE"
           predicates:
             - Path=/api/v1/menu/**
+        - id: customer-service
+          uri: "lb://CUSTOMER-SERVICE"
+          predicates:
+            - Path=/api/v1/customer/**
+        - id: pay-service
+          uri: "lb://PAY-SERVICE"
+          predicates:
+            - Path=/api/v1/pay/**
 
 # actuator
 management:

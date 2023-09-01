@@ -35,7 +35,7 @@ public class CacheFilter extends AbstractGatewayFilterFactory<CustomDto> {
                     Mono.fromRunnable(() -> {
                         if (config.getLogging()) {
                             System.out.println(
-                                    "res" + request.getId() +
+                                    "CacheFilter: res " + request.getId() +
                                     ", " + response.getStatusCode() +
                                     ", " + response.getHeaders() +
                                     ", " + response.getCookies() +
